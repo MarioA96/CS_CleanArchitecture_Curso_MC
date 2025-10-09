@@ -3,7 +3,7 @@ namespace Object_orientedProgramming.Business
     public class Beer
     {
         public string? Name { get; set; }
-        public decimal? Price { get; set; }
+        protected decimal Price { get; set; }
         private decimal _alcohol;
         public decimal Alcohol
         {
@@ -33,6 +33,15 @@ namespace Object_orientedProgramming.Business
         public string GetInfo()
         {
             return "Nombre: " + Name + ", Precio: $" + Price + ", Grados de alcohol: " + Alcohol;
+        }
+
+        public string GetInfo(string message)
+        {
+            return message + " " + GetInfo();
+        }
+        public string GetInfo(int number)
+        {
+            return number + ".- " + GetInfo();
         }
     }
 }
