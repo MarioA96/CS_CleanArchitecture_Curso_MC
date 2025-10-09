@@ -11,8 +11,13 @@ Beer erdingerBeer = new Beer("Erdinger", 3, -2);
 // coronaBeer.Name = "Corona";
 // coronaBeer.Price = 1.5m;
 
-System.Console.WriteLine(erdingerBeer.Name);
+Console.WriteLine(erdingerBeer.Name);
 // System.Console.WriteLine(coronaBeer.Name + " $ " + coronaBeer.Price);
-System.Console.WriteLine(erdingerBeer.GetInfo());
-System.Console.WriteLine(erdingerBeer.SAlcohol);
+Console.WriteLine(erdingerBeer.GetInfo());
+Console.WriteLine(erdingerBeer.SAlcohol);
 
+
+var delirium = new ExpiringBeer("Delirium", 4, 8, new DateTime(2024, 12, 01));
+System.Console.WriteLine(delirium.GetInfo());
+System.Console.WriteLine(delirium.GetInfo("Una cerveza que caduca: "));
+System.Console.WriteLine(delirium.GetInfo(3));
