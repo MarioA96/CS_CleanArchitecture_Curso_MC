@@ -1,11 +1,14 @@
 namespace Object_orientedProgramming.Business
 {
-    public class Beer : Drink
+    public class Beer : Drink, ISellable, ISend
     {
         private const string Category = "Cerveza";
         public string? Name { get; set; }
         protected decimal Price { get; set; }
         private decimal _alcohol;
+
+        public static int QuantityObjects;
+
         public decimal Alcohol
         {
             get { return _alcohol; }
@@ -28,6 +31,7 @@ namespace Object_orientedProgramming.Business
             Name = name;
             Price = price;
             Alcohol = alcohol;
+            QuantityObjects++;
         }
 
         public string SAlcohol
@@ -52,6 +56,13 @@ namespace Object_orientedProgramming.Business
         public override string GetCategory()
         {
             return Category;
+        }
+
+        public decimal GetPrice() => Price;
+
+        public void Send()
+        {
+            Console.WriteLine("Se envia por correo: " + GetInfo());
         }
     }
 }
