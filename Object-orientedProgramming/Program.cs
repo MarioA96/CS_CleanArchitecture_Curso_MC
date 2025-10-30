@@ -32,3 +32,72 @@ Drink drink = new Beer("Erdinger", 3, -2, 1000); // Using the abstract class, Dr
 //It serves a curated list of limited methods, so that only abstracts its functionality
 // So we cannot put in use the method from Beer like, drink.getInfo()
 Console.WriteLine("Quantity: " + drink.GetQuantity() + ", category: " + drink.GetCategory());
+
+//* Polimorphism with abstract classes
+Drink drink2 = new Wine(500);
+Show(drink2);
+drink2 = new Beer("Corona", 2, 4, 330);
+Show(drink2);
+Show(erdingerBeer);
+
+void Show(Drink drink)
+    => Console.WriteLine(drink.GetCategory());
+
+SendSomething(erdingerBeer);
+
+void SendSomething(ISend some)
+{
+    Console.WriteLine("Se hace algo...");
+    some.Send();
+    Console.WriteLine("Se hace algo mas...");
+}
+
+//* Interfaces
+var service = new Service(100, 10);
+ISellable[] concepts = [
+    erdingerBeer,
+    delirium,
+    service
+];
+decimal GetTotal(ISellable[] concepts)
+{
+    decimal total = 0;
+    foreach (var concept in concepts)
+    {
+        total += concept.GetPrice();
+    }
+
+    return total;
+}
+Console.WriteLine(GetTotal(concepts));
+
+//* Generics
+var elements = new Collection<int>(3);
+elements.Add(100);
+elements.Add(150);
+elements.Add(160);
+elements.Add(170);
+foreach (var element in elements.Get())
+{
+    Console.WriteLine(element);
+}
+var names = new Collection<string>(2);
+names.Add("Mario");
+names.Add("Juan");
+names.Add("Caro");
+foreach (var name in names.Get())
+{
+    Console.WriteLine(name);
+}
+var beers = new Collection<Beer>(2);
+beers.Add(erdingerBeer);
+beers.Add(delirium);
+foreach (var beer in beers.Get())
+{
+    Console.WriteLine(beer.GetInfo());
+}
+
+//* Static
+Console.WriteLine($"Objectos crados: {Beer.QuantityObjects}");
+Console.WriteLine(Operations.Add(13, 14));
+System.Console.WriteLine(Operations.Mul(10, 20));
